@@ -6,6 +6,7 @@ ADD . .
 #RUN apk update
 RUN apt-get update
 RUN pip3 install -r requirements.txt
+RUN pip3 install Werkzeug==2.0.0
 
 # run as non-root user
 RUN adduser --disabled-password myuser

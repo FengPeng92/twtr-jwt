@@ -89,30 +89,36 @@ const Compose = () => {
 
     try {
       const config = {
-          method: 'POST',
-          headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(paramdict)
-      }
-      console.log("Compose.js: fetching from " + `${process.env.REACT_APP_API_SERVICE_URL}/tweet`)
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(paramdict),
+      };
+      console.log(
+        "Compose.js: fetching from " +
+          `${process.env.REACT_APP_API_SERVICE_URL}/tweet`
+      );
       //const response = await fetch("http://localhost:5000/tweet", config);
       //const response = await fetch(`${process.env.REACT_APP_BE_NETWORK}:${process.env.REACT_APP_BE_PORT}/tweet`, config);
-      const response = await fetch(`tweet`, config);
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVICE_URL}/tweet`,
+        config
+      );
+      //const response = await fetch(`tweet`, config);
       //const json = await response.json()
       if (response.ok) {
-          //return json
-          //return response
-          console.log("success on send.");
-          
+        //return json
+        //return response
+        console.log("success on send.");
       } else {
-          alert("response: " + response.toString());
+        alert("response: " + response.toString());
       }
 
       try {
         const data = await response.json();
-        console.log("on reply:")
+        console.log("on reply:");
         console.log(data);
 
         // back to landing page!
@@ -121,7 +127,6 @@ const Compose = () => {
         console.log(err);
         alert("exception on reply!");
       }
-
     } catch (error) {
       console.log(error);
       alert("exception on send");
