@@ -135,6 +135,10 @@ const SignIn = () => {
       .then((response) => response.json())
       .then((data) => {
         // save to local storage
+        if (!data[0]?.access_token) {
+          alert("Username or password is not correct");
+          return;
+        }
         console.log("received these keys in return:");
         console.log(data);
         console.log(data[0].access_token);
